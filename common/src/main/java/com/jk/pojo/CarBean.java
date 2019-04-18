@@ -85,6 +85,16 @@ public class CarBean implements Serializable {
 
     private String areaName; //地区
 
+    private Integer start=0;//状态
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
     public String getCarLicense() {
         return carLicense;
     }
