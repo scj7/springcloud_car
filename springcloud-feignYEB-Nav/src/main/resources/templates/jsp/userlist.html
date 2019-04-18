@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/bootstrap3/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css">
+
+    <script src="../js/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-treeview/bootstrap-treeview.min.css">
+
+    <!-- 选项卡插件 -->
+    <script src="../js/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../js/bootStrap-addTabs/bootstrap.addtabs.css">
+
+    <!-- 表格插件 -->
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css">
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- 时间插件 -->
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script src="../js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- 弹框插件 -->
+    <script src="../js/bootstrap-bootbox/bootbox.js"></script>
+</head>
+<body>
+<div id="userTable">
+</div>
+</body>
+<script>
+    $(function(){
+        initUserTable();
+    })
+
+    function initUserTable(){
+        $("#userTable").bootstrapTable({
+            url:"../feignNav/findNav",
+            columns:[
+                {field:"phone",title:"用户手机号"},
+                {field:"carId",title:"收藏车辆ID"},
+                {field:"seeTime",title:"收藏时间"}
+            ]
+        })
+    }
+</script>
+</html>

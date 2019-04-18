@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/bootstrap3/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css">
+
+    <script src="../js/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-treeview/bootstrap-treeview.min.css">
+
+    <!-- 选项卡插件 -->
+    <script src="../js/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../js/bootStrap-addTabs/bootstrap.addtabs.css">
+
+    <!-- 表格插件 -->
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css">
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- 时间插件 -->
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script src="../js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- 弹框插件 -->
+    <script src="../js/bootstrap-bootbox/bootbox.js"></script>
+</head>
+<body>
+
+<div id="carTable">
+    <button type="button" onclick="openAdd()" class="btn btn-info">新增</button>
+    <button type="button" onclick="deleteAll()" class="btn btn-danger">批量删除</button>
+</div>
+
+</body>
+<script>
+
+
+    $(function(){
+        initCarTable();
+    })
+
+    function initCarTable(){
+        $("#carTable").bootstrapTable({
+            url:"http://192.168.1.166:9999/Car/queryCar?page=1&rows=3",
+            toolbar:"#toolbar",
+            pagination:true,
+            pageList:[2,5,10,20],
+            sidePagination:"server",//分页方式：client客户端分页，server服务端分页
+            columns:[
+                {checkbox:true},
+                {field:"id",title:"主键Id"},
+                {field:"img",title:"封面",formatter:function(data){
+                        return "<img width='50px' height='50px' src='"+data+"'/>"
+                    }},
+                {field:"brandName",title:"品牌名称"},
+                {field:"seriesName",title:"车辆系列名称"},
+                {field:"price",title:"价格",onDblClickRow:function(value,row,index){
+                       alert(1)
+                    }},
+                {field:"carAgeName",title:"车龄"},
+                {field:"createTime",title:"变速箱",formatter:function(value,row,index){
+                    return value == 1 ? '自动':'手动';
+                 }},
+                {field:"carModelName",title:"车型"},
+                {field:"mileageName",title:"里程表"},
+                {field:"carCerNmae",title:"排量表"},
+                {field:"carSeatName",title:"座位数表"},
+                {field:"carFuelName",title:"燃油类型"},
+                {field:"colorName",title:"汽车颜色"},
+                {field:"license",title:"牌照",formatter:function(value,row,index){
+                        return value == 1 ? '本地':'外地';
+                    }},
+                {field:"drive",title:"驱动类型",formatter:function(value,row,index){
+                        return value == 1 ? '四驱':'二驱';
+                    }},
+                {field:"nationName",title:"国别"},
+                {field:"elseName",title:"其他配置"},
+                {field:"ownerName",title:"车主名称"},
+                {field:"storeName",title:"店铺"},
+                {field:"carLicense",title:"上牌时间"},
+                {field:"ownerName",title:"车主名称"},
+                {field:"areaName",title:"地区"},
+                {field:"123",title:"操作",formatter:function(value,row,index){
+                        return '<a href="javascript:deleteOne('+row.id+')">删除</a> | <a href="javascript:openUpdate('+row.id+')">修改</a>'
+                    }}
+            ]
+        })
+    }
+
+    function openAdd(){
+        var  url = "../feignNav/toaddCar";
+        var dialog = bootbox.dialog({
+            title: '新增图书',
+            message: createAddContent(url),
+            size: 'large',
+            buttons: {
+                cancel: {
+                    label: "关闭",
+                    className: 'btn-danger',
+                    callback: function(){
+                        console.log('Custom cancel clicked');
+                    }
+                },
+                ok: {
+                    label: "保存",
+                    className: 'btn-info',
+                    callback: function(){
+                        $.ajax({
+                            url:'../book/addBook.do',
+                            type:'post',
+                            data:$("#carForm").serialize(),
+                            success:function(){
+                                alert("新增成功")
+                                console.log('Custom cancel clicked');
+                                //searchBtn();
+                            }
+                        })
+                    }
+                }
+            }
+        });
+    }
+
+    var res;
+    function createAddContent(url){
+        $.ajax({
+            url:url,
+            async:false,
+            success:function(data){
+                res = data;
+            }
+        });
+        return res;
+    }
+</script>
+</html>
