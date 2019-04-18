@@ -15,6 +15,8 @@ public class CarBean implements Serializable {
     private static final long serialVersionUID = 4592182085915324838L;
     private  Integer id;
 
+    private String carName;//汽车名称
+
     private Integer brandId;//品牌Id
 
     private String brandName;//品牌名称
@@ -381,5 +383,13 @@ public class CarBean implements Serializable {
 
     public void setAreaName(String areaName) {
         this.areaName = areaName;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
     }
 }
