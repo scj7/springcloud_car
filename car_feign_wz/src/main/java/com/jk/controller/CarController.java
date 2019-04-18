@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.jk.pojo.AreaBean;
 import com.jk.pojo.BrandBean;
 import com.jk.pojo.CarBean;
 import com.jk.service.CarService;
@@ -28,6 +29,11 @@ public class CarController {
 
     @Autowired
     private CarService carService;
+
+
+
+
+
 
 
     /**

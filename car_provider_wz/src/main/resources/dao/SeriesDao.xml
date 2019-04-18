@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jk.dao.SeriesDao">
+
+    <!-- 根据汽车品牌表Id查询 汽车系列表  , 参数是 汽车品牌表的Id-->
+    <select id="querySeries" parameterType="Integer" resultType="com.jk.pojo.SeriesBean">
+        select id,seriesName,brandId from t_series as s  where s.brandId = #{value}
+    </select>
+</mapper>

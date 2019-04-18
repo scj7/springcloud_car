@@ -7,7 +7,8 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
-
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
@@ -15,3 +16,7 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 30000

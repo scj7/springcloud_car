@@ -2,7 +2,6 @@ package com.jk.utils;
 
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -10,7 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
+
 public class CorsConfiguration implements Filter {
 
     @Bean

@@ -1,7 +1,8 @@
-package com.jk.service;
+package com.jk.serviceimpl;
 
 import com.jk.dao.CarDao;
 import com.jk.pojo.CarBean;
+import com.jk.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

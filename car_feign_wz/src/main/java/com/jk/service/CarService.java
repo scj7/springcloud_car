@@ -1,5 +1,6 @@
 package com.jk.service;
 
+import com.jk.pojo.AreaBean;
 import com.jk.pojo.CarBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * 类描述：
@@ -19,6 +21,7 @@ import java.util.HashMap;
  */
 @FeignClient(value = "car-provider-wz")
 public interface CarService {
+
 
 
 
