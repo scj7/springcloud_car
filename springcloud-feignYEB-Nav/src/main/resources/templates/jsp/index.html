@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../js/bootstrap3/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css">
+    <script src="../js/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-treeview/bootstrap-treeview.min.css">
+    <link rel="stylesheet" href="../js/bootStrap-addTabs/bootstrap.addtabs.css">
+    <script src="../js/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">金科教育</a>
+        </div>
+        <div class="navbar-brand pull-right" style="text-align:center">
+            <a>张三</a>
+            <button type="button" class="btn btn-danger" onclick="zx()">注销</button>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <div id="myTree"></div>
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-10">
+            <div id="myTabs">
+                <!-- 选项卡头 -->
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="#" role="tab" data-toggle="tab">欢迎</a>
+                    </li>
+                </ul>
+                <!-- 选项卡内容 -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        123
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+    function zx(){
+        $.ajax({
+            url:"<%=path%>/book/zx.do",
+            type:"post",
+            data:{},
+            success:function(){
+                alert("注销成功")
+                window.location.href="<%=request.getContextPath() %>/type/index.do";
+            }
+        })
+    }
+
+    $(function(){
+        initTree();
+    })
+
+    function  initTree(){
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            data:{},
+            dataType:"json",
+            success:function(data){
+                $("#myTree").treeview({
+                    data:data,
+                    onNodeSelected:function(event,node){
+                        $.addtabs({iframeHeight: 650});
+                        $.addtabs.add({
+                            id:node.id,
+                            title:node.text,
+                            url:"../"+node.href
+                        })
+                    }
+                })
+            }
+        })
+    }
+</script>
+</html>

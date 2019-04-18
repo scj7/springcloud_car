@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/bootstrap3/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css">
+
+    <script src="../js/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-treeview/bootstrap-treeview.min.css">
+
+    <!-- 选项卡插件 -->
+    <script src="../js/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../js/bootStrap-addTabs/bootstrap.addtabs.css">
+
+    <!-- 表格插件 -->
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css">
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- 时间插件 -->
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script src="../js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- 弹框插件 -->
+    <script src="../js/bootstrap-bootbox/bootbox.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <form class="form-horizontal" id="carForm">
+        <div class="form-group">
+            <label for="seriesName" class="col-sm-2 control-label">车名</label>
+            <div class="col-sm-4">
+                <input id="seriesName" class="form-control" name="seriesName"/>
+            </div>
+            <label for="price" class="col-sm-2 control-label">价格</label>
+            <div class="col-sm-4">
+                <input id="price" class="form-control" name="price"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="brandId" class="col-sm-2 control-label">品牌</label>
+            <div class="col-sm-4">
+                <select id="brandId" class="form-control"></select>
+            </div>
+            <label for="carAgeId" class="col-sm-2 control-label">车龄</label>
+            <div class="col-sm-4">
+                <select id="carAgeId" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="series" class="col-sm-2 control-label">车辆系列</label>
+            <div class="col-sm-4">
+                <select id="series" class="form-control"></select>
+            </div>
+            <label for="gearbox" class="col-sm-2 control-label">变速箱</label>
+            <div class="col-sm-4">
+                <select id="gearbox" class="form-control">
+                    <option value="1">自动</option>
+                    <option value="2">手动</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="carModel" class="col-sm-2 control-label">车型</label>
+            <div class="col-sm-4">
+                <select id="carModel" class="form-control"></select>
+            </div>
+            <label for="mileageId" class="col-sm-2 control-label">里程表</label>
+            <div class="col-sm-4">
+                <select id="mileageId" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="carCerId" class="col-sm-2 control-label">排量表</label>
+            <div class="col-sm-4">
+                <select id="carCerId" class="form-control"></select>
+            </div>
+            <label for="carSeat" class="col-sm-2 control-label">座位数</label>
+            <div class="col-sm-4">
+                <select id="carSeat" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="carFuel" class="col-sm-2 control-label">燃油类型</label>
+            <div class="col-sm-4">
+                <select id="carFuel" class="form-control"></select>
+            </div>
+            <label for="color" class="col-sm-2 control-label">颜色</label>
+            <div class="col-sm-4">
+                <select id="color" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="license" class="col-sm-2 control-label">牌照</label>
+            <div class="col-sm-4">
+                <select id="license" class="form-control">
+                    <option value="1">本地</option>
+                    <option value="0">外地</option>
+                </select>
+            </div>
+            <label for="drive" class="col-sm-2 control-label">驱动类型</label>
+            <div class="col-sm-4">
+                <select id="drive" class="form-control">
+                    <option value="0">二驱</option>
+                    <option value="0">四驱</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nationId" class="col-sm-2 control-label">国别</label>
+            <div class="col-sm-4">
+                <select id="nationId" class="form-control"></select>
+            </div>
+            <label for="elseId" class="col-sm-2 control-label">其他配置</label>
+            <div class="col-sm-4">
+                <select id="elseId" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ownerId" class="col-sm-2 control-label">车主</label>
+            <div class="col-sm-4">
+                <select id="ownerId" class="form-control"></select>
+            </div>
+            <label for="storeId" class="col-sm-2 control-label">车辆所在店铺名称</label>
+            <div class="col-sm-4">
+                <select id="storeId" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="carLicense" class="col-sm-2 control-label">上牌时间</label>
+            <div class="col-sm-4">
+                <input id="carLicense" class="form-control" name="price"/>
+            </div>
+            <label for="areaId" class="col-sm-2 control-label">地区</label>
+            <div class="col-sm-2">
+                <select id="areaId" class="form-control"></select>
+            </div>
+            <label for="areaId2" class="col-sm-0"></label>
+            <div class="col-sm-2">
+                <select id="areaId2" class="form-control" onChange="areaId()"></select>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+
+<script>
+
+    $(function(){
+        findBrand();
+        findSeries();
+        findCarAge();
+        carModel();
+        mileageId();
+        carSeat();
+        carFuel();
+        color();
+        nationId();
+        elseId();
+        ownerId();
+        storeId();
+        areaId();
+        carCerId();
+    })
+
+    function findBrand(){ //品牌回显
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].brandId+"' value='"+data[i].id+"'>"+data[i].brandName+"</option>"
+                }
+                $("#brandId").html(op);
+            }
+        })
+    }
+
+    function findCarAge(){ //车龄
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].carAgeId+"' value='"+data[i].id+"'>"+data[i].carAgeName+"</option>"
+                }
+                $("#carAgeId").html(op);
+            }
+        })
+    }
+    function findSeries(){ //车系列回显
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].series+"' value='"+data[i].id+"'>"+data[i].seriesName+"</option>"
+                }
+                $("#series").html(op);
+            }
+        })
+    }
+    function carModel(){ //车型
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].carModel+"' value='"+data[i].id+"'>"+data[i].carModelName+"</option>"
+                }
+                $("#carModel").html(op);
+            }
+        })
+    }
+    function mileageId(){ //里程表
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].mileageId+"' value='"+data[i].id+"'>"+data[i].mileageName+"</option>"
+                }
+                $("#mileageId").html(op);
+            }
+        })
+    }
+    function carCerId(){ //排量表
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].carModel+"' value='"+data[i].id+"'>"+data[i].carCerNmae+"</option>"
+                }
+                $("#carCerId").html(op);
+            }
+        })
+    }
+    function carSeat(){ //座位数
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].carSeat+"' value='"+data[i].id+"'>"+data[i].carSeatName+"</option>"
+                }
+                $("#carSeat").html(op);
+            }
+        })
+    }
+    function carFuel(){ //燃油类型
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].carFuel+"' value='"+data[i].id+"'>"+data[i].carFuelName+"</option>"
+                }
+                $("#carFuel").html(op);
+            }
+        })
+    }
+    function color(){ //颜色
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].color+"' value='"+data[i].id+"'>"+data[i].colorName+"</option>"
+                }
+                $("#color").html(op);
+            }
+        })
+    }
+    function nationId(){ //国别表 。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].nationId+"' value='"+data[i].id+"'>"+data[i].nationName+"</option>"
+                }
+                $("#nationId").html(op);
+            }
+        })
+    }
+    function elseId(){ //其他配置 。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].elseId+"' value='"+data[i].id+"'>"+data[i].elseName+"</option>"
+                }
+                $("#elseId").html(op);
+            }
+        })
+    }
+    function ownerId(){ //车主。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].ownerId+"' value='"+data[i].id+"'>"+data[i].ownerName+"</option>"
+                }
+                $("#ownerId").html(op);
+            }
+        })
+    }
+    function storeId(){ //车辆所在店铺表。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].storeId+"' value='"+data[i].id+"'>"+data[i].storeName+"</option>"
+                }
+                $("#storeId").html(op);
+            }
+        })
+    }
+    function areaId(){ //地区。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].areaId+"' value='"+data[i].id+"'>"+data[i].areaName+"</option>"
+                }
+                $("#areaId").html(op);
+            }
+        })
+    }
+    function areaId2(id){ //地区。。。
+        $.ajax({
+            url:"../feignNav/findNav",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var op = "<option>请选择</option>";
+                for (var i = 0;i<data.length;i++) {
+                    op += "<option type='text' name='"+data[i].areaId+"' value='"+data[i].id+"'>"+data[i].areaName+"</option>"
+                }
+                $("#areaId2").html(op);
+            }
+        })
+    }
+
+</script>
+</html>
