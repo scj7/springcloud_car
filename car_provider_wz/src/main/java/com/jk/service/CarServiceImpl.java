@@ -31,7 +31,6 @@ public class CarServiceImpl implements CarService {
     public HashMap<String, Object> queryCar(Integer page, Integer rows, CarBean carBean) {
         long start = (page-1)*rows;
         long total = carDao.queryCount(carBean);
-
         HashMap<String,Object> map =new HashMap<>();
         List<CarBean> list = carDao.queryCar(start,rows,carBean);
         map.put("rows",list);

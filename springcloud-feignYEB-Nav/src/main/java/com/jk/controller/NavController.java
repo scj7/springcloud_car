@@ -41,4 +41,8 @@ public class NavController {
     public String touserlist(){
         return "jsp/userlist";
     }
+    @RequestMapping("todetection")
+    public String detection(){
+        return "jsp/detection";
+    }
 }
